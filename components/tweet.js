@@ -11,7 +11,7 @@ function Tweet(props)  {
       </div>
       <div>
         <p>{props.content}</p>
-        <p className={styles.date}>{props}</p>
+        <p className={styles.date}>{props.createAt}</p>
       </div>
       <div>
         <FontAwesomeIcon icon={faHeart} />

@@ -12,18 +12,16 @@ function Home() {
   
     // Récupérer les tweets depuis l'API
     useEffect(() => {
-        fetch('http://localhost:3000/tweets/', {
-          method: 'GET',
-        })
+        fetch('http://localhost:3000/tweets/')
           .then((response) => response.json())
           .then((data) => {
               setTweets(data); // Stockez les composants générés 
             }
           )
-      }, []); // Ajoutez la dépendance `user.username` si cela change dynamiquement
+      }, []); 
     
       const tweetList = tweets.map((data, i) => {
-        return <Tweet key={i} {...data} username={data.username} content={data.content} date={data.date} />
+        return <Tweet key={i} {...data} username={data.username} content={data.content} date={data.createAt} />
       })
 
   return (
