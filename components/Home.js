@@ -1,10 +1,12 @@
 import styles from '../styles/Home.module.css';
 import Head from 'next/head';
-import { useEffect, useState } from 'react';
-import { useSelector } from 'react'
+import { useSelector } from 'react-redux';
+import Tweet from './Tweet';
+
 
 function Home() {
 	const user = useSelector((state) => state.user.value);
+    console.log(user)
 
   return (
     <div>
@@ -15,18 +17,27 @@ function Home() {
             {/* PARTIE DE GAUCHE // LOGO + PP USERNAME @username */}
             <div className={styles.left}>
             <img src="dog_logo_light.png" alt="Logo" width="80px" height="80px" />
-                <div>
-                    <img src="pp_dog.png" alt="Photo de profil" />
+                <div className={styles.userBottom}>
+                    <img src="pp_dog.png" alt="Photo de profil"  width="80px" height="80px"/>
                     <div>
                         <p>{user.username}</p>
-                        <p>@{user.username.toLowerCase()}</p>
+                        <p>@{user.username}</p>
                     </div>
                 </div>
             </div>
             {/* PARTIE DU MILIEU // CREATION TWEET MAX CHAR + LISTE TWEETS */}
             <div className={styles.mid}>
-                <h2 className={styles.title}>Home</h2>
-
+                <div className={styles.topMid}>
+                    <h2 className={styles.title}>Home</h2>
+                    <input type='text' placeholder="What's up ?"/>
+                    <div className={styles.sendtweet}>
+                    <p>0/280</p>  
+                    <button>TWEET</button>
+                    </div>
+                </div>
+                <div className={styles.tweetMid}>
+                    <Tweet />
+                </div>
             </div>
             {/* PARTIE DE DROITE // TRENDS LISTE # */}
             <div className={styles.right}>

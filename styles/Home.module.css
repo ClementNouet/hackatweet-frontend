@@ -4,9 +4,11 @@
     width: 100vw;
     display: grid;
     grid-template-rows: 1fr;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 3fr 6fr 3fr;
     background-color: #151D27;
     font-family: Verdana sans-serif;
+    color: white;
+    padding: 30px;
   }
 
   .titre {
@@ -14,11 +16,68 @@
   }
 
   .left {
+    font-family: Verdana sans-serif;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    border-right: 1px solid gray;
   }
+
+.userBottom {
+    display: flex;
+    align-items: center;
+}
+
+.userBottom img  {
+    margin-right: 10px;
+}
+.userBottom p  {
+    margin: 0px;
+
+}
 
   .mid {
     text-align: left;
+    width: 100%;
+    padding: 10px;
+  }
+
+  .mid input {
+    width: 100%;
+    background-color: transparent;
+    text-decoration: none; 
+    outline: none;
+    border: 0px;
+    background: none;
+    padding: 15px;
+    color: white;
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+
+  .topMid {
+    padding-bottom: 15px;
+    border-bottom: 1px solid gray;
+  }
+
+  .sendtweet {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .sendtweet p {
+    margin-right: 30px;
+  }
+  .sendtweet button {
+    margin-right: 30px;
+    background-color: blue;
+    color: white;
+    border-radius: 30px;
+    border: 0px;
+    text-decoration: none;
+    width: 15%;
+  }
+
+  .right{
+
   }

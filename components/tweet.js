@@ -1,9 +1,9 @@
 import styles from '../styles/Tweet.module.css';
-import { useStat, useSelector } from 'react'
+import { useSelector } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faTrash } from '@fortawesome/free-solid-svg-icons';
 
-function tweet() {
+function Tweet() {
 	const user = useSelector((state) => state.user.value);
 
 	return (
@@ -23,4 +23,4 @@ function tweet() {
 	);
 }
 
-export default tweet;
+export default Tweet;
