@@ -2,11 +2,13 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { login, logout } from '../reducers/user';
 import styles from '../styles/Signup.module.css';
+import { useRouter } from 'next/router';
 
 
 function Signup (){
     const dispatch = useDispatch();
     const [signupData, setSignupData] = useState({ username: '', password: '', firstname:'' });
+	const router = useRouter();
 
     const handleRegister = () => {
 		fetch('http://localhost:3000/users/signup', {
@@ -18,6 +20,7 @@ function Signup (){
 				if (data.result) {
 					dispatch(login({ username: data.user.username, token: data.user.token, firstname: data.user.firstname  }));
 					setSignupData({ username: '', password: '', firstname:'' })
+					router.push('/home');
 				}
 			});
 	};

@@ -2,11 +2,13 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { login, logout } from '../reducers/user';
 import styles from '../styles/Signup.module.css';
+import { useRouter } from 'next/router';
 
 
 function Signin (){
     const dispatch = useDispatch();
     const [signinData, setSigninData] = useState({ username: '', password: ''});
+    const router = useRouter();
 
     const handleConnection = () => {
 
@@ -19,6 +21,7 @@ function Signin (){
 				if (data.result) {
 					dispatch(login({ username: data.user.username, token: data.user.token, firstname: data.user.firstname }));
 					setSigninData({ username: '', password: ''})
+                    router.push('/home');
 				}
 			});
 	};
