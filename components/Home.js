@@ -11,6 +11,7 @@ function Home() {
     const [tweets, setTweets] = useState([]); // State pour stocker les tweets
     const [tweet, setTweet] = useState('')
     const [countChar, setCountChar] = useState(0)
+    const [final, setFinal] = useState(false)
   
     // Récupérer les tweets depuis l'API
     useEffect(() => {
@@ -20,26 +21,29 @@ function Home() {
               setTweets(data); // Stockez les composants générés 
             }
           )
-      }, []); 
+      }, [final]); 
     
       const tweetList = tweets.map((data, i) => {
         return <Tweet key={i} {...data} username={data.username} content={data.content} date={data.createAt} />
       })
       
 
-  const handleTweet = () => {
-      fetch(`http://localhost:3000/tweets/newtweet/${user.value.token}`, {
+      const handleTweet = () => {
+        fetch(`http://localhost:3000/tweets/newTweet/${user.token}`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify(tweet),
-		  }).then(response => response.json())
+			body: JSON.stringify({tweet: tweet}),
+		}).then(response => response.json())
 			.then(data => {
 				if (data.result) {
 					setTweet('')
           setCountChar(0)
+          setFinal(false)
 				}
 			});
       }
+
+
 
 
 
@@ -64,10 +68,10 @@ function Home() {
             <div className={styles.mid}>
                 <div className={styles.topMid}>
                     <h2 className={styles.title}>Home</h2>
-                    <input type='text' placeholder="What's up ?" onChange={(e)=> {setTweet(e.target.value)}} value={tweet}/>
+                    <input type='text' placeholder="What's up ?" onChange={(e)=> {setTweet(e.target.value); setCountChar(e.target.value.length)}} value={tweet}/>
                     <div className={styles.sendtweet}>
-                    <p onChange={(e)=> {setCountChar(tweet.length)}} >{countChar}/280</p>  
-                    <button onClick={handleTweet}>TWEET</button>
+                    <p>{countChar}/280</p> 
+                    <button onClick={()=>{handleTweet(), setFinal(true)}}>TWEET</button>
                     </div>
                 </div>
                 <div className={styles.tweetMid}>
