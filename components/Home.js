@@ -1,9 +1,10 @@
 import styles from '../styles/Home.module.css';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react'
 
 function Home() {
-
+	const user = useSelector((state) => state.user.value);
 
   return (
     <div>
@@ -17,14 +18,15 @@ function Home() {
                 <div>
                     <img src="pp_dog.png" alt="Photo de profil" />
                     <div>
-                        <p>John</p>
-                        <p>@john</p>
+                        <p>{user.username}</p>
+                        <p>@{user.username.toLowerCase()}</p>
                     </div>
                 </div>
             </div>
             {/* PARTIE DU MILIEU // CREATION TWEET MAX CHAR + LISTE TWEETS */}
             <div className={styles.mid}>
-                <h2>Home</h2>
+                <h2 className={styles.title}>Home</h2>
+
             </div>
             {/* PARTIE DE DROITE // TRENDS LISTE # */}
             <div className={styles.right}>
