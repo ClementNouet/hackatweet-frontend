@@ -24,7 +24,7 @@ function Home() {
       }, [final]); 
     
       const tweetList = tweets.map((data, i) => {
-        return <Tweet key={i} {...data} username={data.username} content={data.content} date={data.createAt} />
+        return <Tweet key={i} {...data} username={data.username} content={data.content} date={data.createAt} likes={data.likes} id={data._id}/>
       })
       
 
@@ -42,7 +42,6 @@ const handleTweet = () => {
 				}
 		  });
 }
-
 
 
 
