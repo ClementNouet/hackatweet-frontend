@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { login, logout } from '../reducers/user';
+import styles from '../styles/Signup.module.css';
 
 
 function Signup (){
@@ -15,7 +16,7 @@ function Signup (){
 		}).then(response => response.json())
 			.then(data => {
 				if (data.result) {
-					dispatch(login({ username: data.user, token: data.token, firstname: data.firstname  }));
+					dispatch(login({ username: data.user.username, token: data.user.token, firstname: data.user.firstname  }));
 					setSignupData({ username: '', password: '', firstname:'' })
 				}
 			});
@@ -23,24 +24,27 @@ function Signup (){
 
 
     return (
-        <div>
+        <div className={styles.main}>
             {/*logo*/}
-            <p>Create your Hackateweet account</p>
-                <input  type="text" 
+            <p className={styles.title}>Create your Hackateweet account</p>
+                <input  className={styles.input}
+						type="text" 
 						placeholder="Firstname" 
 						onChange={(e) => 
 							setSignupData({ ...signupData, firstname: e.target.value })} 
 						value={signupData.firstname} />
-				<input  type="text" 
+				<input  className={styles.input}
+						type="text" 
 						placeholder="Username" 
 						onChange={(e) => 
 							setSignupData({ ...signupData, username: e.target.value })} 
 						value={signupData.username} />
-				<input  type="password" 
+				<input  className={styles.input}
+						type="password" 
 						placeholder="Password" 
 						onChange={(e) => setSignupData({ ...signupData, password: e.target.value })} 
 						value={signupData.password}/>
-				<button id="register" onClick={()=>handleRegister()}>Register</button>
+				<button className={styles.button} onClick={()=>handleRegister()}>Sign up</button>
         </div>
     )
 }
