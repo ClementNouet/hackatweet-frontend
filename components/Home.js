@@ -68,7 +68,7 @@ const handleTweet = () => {
             <div className={styles.mid}>
                 <div className={styles.topMid}>
                     <h2 className={styles.title}>Home</h2>
-                    <input type='text' placeholder="What's up ?" onChange={(e)=> {setTweet(e.target.value); setCountChar(e.target.value.length)}} value={tweet}/>
+                    <input type='text' placeholder="What's up ?" onChange={(e)=> {setTweet(e.target.value); setCountChar(e.target.value.length)}} value={tweet} maxLength={280}/>
                     <div className={styles.sendtweet}>
                     <p>{countChar}/280</p> 
                     <button className={styles.button} onClick={()=>{handleTweet(), setFinal(true)}}>TWEET</button>
