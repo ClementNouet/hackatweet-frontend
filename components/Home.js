@@ -18,14 +18,10 @@ function Home() {
         fetch('http://localhost:3000/tweets/')
           .then((response) => response.json())
           .then((data) => {
-              setTweets(data);
+              setTweets(data); // Stockez les composants générés 
             }
           )
-<<<<<<< HEAD
-      }, [tweets]); 
-=======
       }, [final]); 
->>>>>>> d5e124a2d72e1f20908cb1a22efb4d1f1bc2b293
     
       const tweetList = tweets.map((data, i) => {
         return <Tweet key={i} {...data} username={data.username} content={data.content} date={data.createAt} />
@@ -72,14 +68,10 @@ function Home() {
             <div className={styles.mid}>
                 <div className={styles.topMid}>
                     <h2 className={styles.title}>Home</h2>
-                    <input type='text' placeholder="What's up ?" onChange={(e)=> {setTweet(e.target.value); setCountChar(e.target.value.length)}} value={tweet}/>
+                    <input type='text' placeholder="What's up ?" onChange={(e)=> {setTweet(e.target.value); setCountChar(e.target.value.length)}} value={tweet} maxLength={280}/>
                     <div className={styles.sendtweet}>
                     <p>{countChar}/280</p> 
-<<<<<<< HEAD
-                    <button onClick={handleTweet()}>TWEET</button>
-=======
                     <button onClick={()=>{handleTweet(), setFinal(true)}}>TWEET</button>
->>>>>>> d5e124a2d72e1f20908cb1a22efb4d1f1bc2b293
                     </div>
                 </div>
                 <div className={styles.tweetMid}>
