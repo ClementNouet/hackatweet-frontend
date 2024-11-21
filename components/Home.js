@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { addTweet } from '../reducers/tweet';
-import Tweet from './Tweet';
+import Tweet from './tweet';
 
 
 function Home() {
@@ -27,15 +27,16 @@ function Home() {
       })
       
 
-      const handleTweet = () => {
-        fetch(`http://localhost:3000/tweets/newtweet/${user.value.token}`, {
+  const handleTweet = () => {
+      fetch(`http://localhost:3000/tweets/newtweet/${user.value.token}`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(tweet),
-		}).then(response => response.json())
+		  }).then(response => response.json())
 			.then(data => {
 				if (data.result) {
 					setTweet('')
+          setCountChar(0)
 				}
 			});
       }
