@@ -17,10 +17,10 @@ function Home() {
         fetch('http://localhost:3000/tweets/')
           .then((response) => response.json())
           .then((data) => {
-              setTweets(data); // Stockez les composants générés 
+              setTweets(data);
             }
           )
-      }, []); 
+      }, [tweets]); 
     
       const tweetList = tweets.map((data, i) => {
         return <Tweet key={i} {...data} username={data.username} content={data.content} date={data.createAt} />
@@ -68,7 +68,7 @@ function Home() {
                     <input type='text' placeholder="What's up ?" onChange={(e)=> {setTweet(e.target.value); setCountChar(e.target.value.length)}} value={tweet}/>
                     <div className={styles.sendtweet}>
                     <p>{countChar}/280</p> 
-                    <button onClick={handleTweet}>TWEET</button>
+                    <button onClick={handleTweet()}>TWEET</button>
                     </div>
                 </div>
                 <div className={styles.tweetMid}>
