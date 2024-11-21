@@ -1,0 +1,12 @@
+.container {
+    margin: 10px
+}
+
+.tweetUsername {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.tweetUsername img {
+    margin-right: 10px;
+}

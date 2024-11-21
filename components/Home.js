@@ -1,12 +1,30 @@
 import styles from '../styles/Home.module.css';
 import Head from 'next/head';
 import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { addTweet } from '../reducers/tweet';
 import Tweet from './Tweet';
 
 
 function Home() {
-	const user = useSelector((state) => state.user.value);
-    console.log(user)
+    const user = useSelector((state) => state.user.value); // Récupération de l'utilisateur depuis le Redux store
+    const [tweets, setTweets] = useState([]); // State pour stocker les tweets
+  
+    // Récupérer les tweets depuis l'API
+    useEffect(() => {
+        fetch('http://localhost:3000/tweets/', {
+          method: 'GET',
+        })
+          .then((response) => response.json())
+          .then((data) => {
+              setTweets(data); // Stockez les composants générés 
+            }
+          )
+      }, []); // Ajoutez la dépendance `user.username` si cela change dynamiquement
+    
+      const tweetList = tweets.map((data, i) => {
+        return <Tweet key={i} {...data} username={data.username} content={data.content} date={data.date} />
+      })
 
   return (
     <div>
@@ -36,7 +54,7 @@ function Home() {
                     </div>
                 </div>
                 <div className={styles.tweetMid}>
-                    <Tweet />
+                    {tweetList}
                 </div>
             </div>
             {/* PARTIE DE DROITE // TRENDS LISTE # */}
@@ -47,5 +65,6 @@ function Home() {
     </div>
   );
 }
+
 
 export default Home;
