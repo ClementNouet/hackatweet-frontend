@@ -28,10 +28,10 @@ function Home() {
       
 
       const handleTweet = () => {
-        fetch(`http://localhost:3000/tweets/newtweet/${user.value.token}`, {
+        fetch(`http://localhost:3000/tweets/newTweet/${user.token}`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify(tweet),
+			body: JSON.stringify({tweet: tweet}),
 		}).then(response => response.json())
 			.then(data => {
 				if (data.result) {
@@ -39,6 +39,8 @@ function Home() {
 				}
 			});
       }
+
+
 
 
 
@@ -63,9 +65,9 @@ function Home() {
             <div className={styles.mid}>
                 <div className={styles.topMid}>
                     <h2 className={styles.title}>Home</h2>
-                    <input type='text' placeholder="What's up ?" onChange={(e)=> {setTweet(e.target.value)}} value={tweet}/>
+                    <input type='text' placeholder="What's up ?" onChange={(e)=> {setTweet(e.target.value); setCountChar(e.target.value.length)}} value={tweet}/>
                     <div className={styles.sendtweet}>
-                    <p onChange={(e)=> {setCountChar(tweet.length)}} >{countChar}/280</p>  
+                    <p>{countChar}/280</p> 
                     <button onClick={handleTweet}>TWEET</button>
                     </div>
                 </div>
