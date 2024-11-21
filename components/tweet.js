@@ -5,7 +5,15 @@ import { useSelector } from 'react-redux';
 
 function Tweet(props)  {
     const user = useSelector((state) => state.user.value); // Récupération de l'utilisateur depuis le Redux store
-  return (
+    const handleLike = () => {
+      fetch(`http://localhost:3000/tweets/${props.id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(),
+        }).then(response => response.json())
+          .then();
+    }
+    return (
     <div className={styles.container}>
       <div>
         <img className={styles.images} src="/pp_dog.png" alt="Photo de profil" />
@@ -16,7 +24,8 @@ function Tweet(props)  {
         <p className={styles.date}>{props.createAt}</p>
       </div>
       <div>
-        <FontAwesomeIcon icon={faHeart} />
+        <FontAwesomeIcon icon={faHeart} onClick={()=>handleLike()}/>
+        <span>{props.likes}</span>
         <FontAwesomeIcon icon={faTrash} />
       </div>
     </div>
