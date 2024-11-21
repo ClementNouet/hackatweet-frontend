@@ -1,9 +1,9 @@
-import styles from '../styles/Home.module.css';
+import styles from '../styles/Login.module.css';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import Signup from './Signup';
 
-function Home() {
+function Login() {
   const [isOpenSignUp, setIsOpenSignUp] = useState(false)
 
   return (
@@ -20,10 +20,19 @@ function Home() {
           <h1>See what's happening</h1>
           <h3>Join Hackateweet today.</h3>
           <button onClick={() => setIsOpenSignUp(true)}>Sign up</button>
+
+          {/* Popup Signup */}
           {isOpenSignUp && (
-            <div>
-              <Signup />
-              <button onClick={() => setIsOpenSignUp(false)}>Close</button>
+            <div className={styles.modalOverlay}>
+              <div className={styles.modalContent}>
+                <Signup />
+                <button
+                  className={styles.closeButton}
+                  onClick={() => setIsOpenSignUp(false)}
+                >
+                  Close
+                </button>
+              </div>
             </div>
           )}
           
@@ -35,4 +44,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Login;
