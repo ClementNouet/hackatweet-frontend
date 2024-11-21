@@ -2,7 +2,7 @@ import styles from '../styles/Tweet.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faTrash } from '@fortawesome/free-solid-svg-icons';
 
-function Tweet(props) {
+function Tweet(props)  {
   return (
     <div className={styles.container}>
       <div>
