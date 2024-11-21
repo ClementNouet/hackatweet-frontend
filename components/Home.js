@@ -9,6 +9,8 @@ import Tweet from './Tweet';
 function Home() {
     const user = useSelector((state) => state.user.value); // Récupération de l'utilisateur depuis le Redux store
     const [tweets, setTweets] = useState([]); // State pour stocker les tweets
+    const [tweet, setTweet] = useState('')
+    const [countChar, setCountChar] = useState(0)
   
     // Récupérer les tweets depuis l'API
     useEffect(() => {
@@ -23,6 +25,22 @@ function Home() {
       const tweetList = tweets.map((data, i) => {
         return <Tweet key={i} {...data} username={data.username} content={data.content} date={data.createAt} />
       })
+      
+
+      const handleTweet = () => {
+        fetch(`http://localhost:3000/tweets/newtweet/${user.value.token}`, {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(tweet),
+		}).then(response => response.json())
+			.then(data => {
+				if (data.result) {
+					setTweet('')
+				}
+			});
+      }
+
+
 
   return (
     <div>
@@ -45,10 +63,10 @@ function Home() {
             <div className={styles.mid}>
                 <div className={styles.topMid}>
                     <h2 className={styles.title}>Home</h2>
-                    <input type='text' placeholder="What's up ?"/>
+                    <input type='text' placeholder="What's up ?" onChange={(e)=> {setTweet(e.target.value)}} value={tweet}/>
                     <div className={styles.sendtweet}>
-                    <p>0/280</p>  
-                    <button>TWEET</button>
+                    <p onChange={(e)=> {setCountChar(tweet.length)}} >{countChar}/280</p>  
+                    <button onClick={handleTweet}>TWEET</button>
                     </div>
                 </div>
                 <div className={styles.tweetMid}>
