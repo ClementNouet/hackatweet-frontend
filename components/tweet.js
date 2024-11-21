@@ -9,7 +9,7 @@ function Tweet(props)  {
     <div className={styles.container}>
       <div>
         <img className={styles.images} src="/pp_dog.png" alt="Photo de profil" />
-        <h2 className={styles.name}>{user.username}</h2>
+        <h2 className={styles.name}>{props.username}</h2>
       </div>
       <div>
         <p>{props.content}</p>
