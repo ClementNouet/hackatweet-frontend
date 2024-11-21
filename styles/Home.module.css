@@ -1,0 +1,32 @@
+@font-face {
+    font-family: 'Mont Heavy';
+    src: url('./public/fonts/Mont-ExtraLightDEMO.otf') format('otf'),
+         url('./public/fonts/Mont-HeavyDEMO.otf') format('otf');
+    font-weight: 900;
+    font-style: normal;
+  }
+
+.main {
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    background-color: #151D27;
+    font-family: Verdana sans-serif;
+  }
+
+  h2 {
+    font-family: 'Mont Heavy';
+    font-weight: 900;
+  }
+
+  .left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .mid {
+    text-align: left;
+  }
