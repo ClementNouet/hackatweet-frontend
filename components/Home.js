@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { addTweet } from '../reducers/tweet';
-import Tweet from './Tweet';
+import Tweet from './tweet';
 
 
 function Home() {
@@ -11,6 +11,7 @@ function Home() {
     const [tweets, setTweets] = useState([]); // State pour stocker les tweets
     const [tweet, setTweet] = useState('')
     const [countChar, setCountChar] = useState(0)
+    const [final, setFinal] = useState(false)
   
     // Récupérer les tweets depuis l'API
     useEffect(() => {
@@ -20,7 +21,11 @@ function Home() {
               setTweets(data);
             }
           )
+<<<<<<< HEAD
       }, [tweets]); 
+=======
+      }, [final]); 
+>>>>>>> d5e124a2d72e1f20908cb1a22efb4d1f1bc2b293
     
       const tweetList = tweets.map((data, i) => {
         return <Tweet key={i} {...data} username={data.username} content={data.content} date={data.createAt} />
@@ -36,6 +41,8 @@ function Home() {
 			.then(data => {
 				if (data.result) {
 					setTweet('')
+          setCountChar(0)
+          setFinal(false)
 				}
 			});
       }
@@ -68,7 +75,11 @@ function Home() {
                     <input type='text' placeholder="What's up ?" onChange={(e)=> {setTweet(e.target.value); setCountChar(e.target.value.length)}} value={tweet}/>
                     <div className={styles.sendtweet}>
                     <p>{countChar}/280</p> 
+<<<<<<< HEAD
                     <button onClick={handleTweet()}>TWEET</button>
+=======
+                    <button onClick={()=>{handleTweet(), setFinal(true)}}>TWEET</button>
+>>>>>>> d5e124a2d72e1f20908cb1a22efb4d1f1bc2b293
                     </div>
                 </div>
                 <div className={styles.tweetMid}>
