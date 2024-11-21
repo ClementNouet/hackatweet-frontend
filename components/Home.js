@@ -18,7 +18,7 @@ function Home() {
         fetch('http://localhost:3000/tweets/')
           .then((response) => response.json())
           .then((data) => {
-              setTweets(data); // Stockez les composants générés 
+              setTweets(data.reverse()); // Stockez les composants générés 
             }
           )
       }, [final]); 
@@ -28,11 +28,11 @@ function Home() {
       })
       
 
-      const handleTweet = () => {
-        fetch(`http://localhost:3000/tweets/newTweet/${user.token}`, {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({tweet: tweet}),
+const handleTweet = () => {
+    fetch(`http://localhost:3000/tweets/newTweet/${user.token}`, {
+		method: 'POST',
+		headers: { 'Content-Type': 'application/json' },
+		body: JSON.stringify({tweet: tweet}),
 		}).then(response => response.json())
 			.then(data => {
 				if (data.result) {
@@ -40,8 +40,8 @@ function Home() {
           setCountChar(0)
           setFinal(false)
 				}
-			});
-      }
+		  });
+}
 
 
 
@@ -71,7 +71,7 @@ function Home() {
                     <input type='text' placeholder="What's up ?" onChange={(e)=> {setTweet(e.target.value); setCountChar(e.target.value.length)}} value={tweet} maxLength={280}/>
                     <div className={styles.sendtweet}>
                     <p>{countChar}/280</p> 
-                    <button onClick={()=>{handleTweet(), setFinal(true)}}>TWEET</button>
+                    <button className={styles.button} onClick={()=>{handleTweet(), setFinal(true)}}>TWEET</button>
                     </div>
                 </div>
                 <div className={styles.tweetMid}>
