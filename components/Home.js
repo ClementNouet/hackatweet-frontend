@@ -44,7 +44,7 @@ function Home() {
 
     
       const tweetList = tweets.map((data, i) => {
-        return <Tweet key={i} {...data} username={data.username} content={data.content} date={data.createAt} likes={data.likes} id={data.id} removeTweet={removeTweet}/>
+        return <Tweet key={i} {...data} username={data.username} content={data.content} date={data.createAt} likes={data.likes} id={data.id} usersLikes={data.usersLikes} removeTweet={removeTweet}/>
       })
       
 
@@ -86,7 +86,7 @@ const handleLogout = () => {
                         <p  className={styles.userInfos}>{user.username}</p>
                         <p  className={styles.userInfos}>@{user.username}</p>
                         <Link href="/index">
-                        <button onClick={() => handleLogout()}>Logout</button>
+                        <button onClick={() => handleLogout()} className={styles.logout}>Logout</button>
                         </Link>
                     </div>
                 </div>
