@@ -2,14 +2,15 @@ import styles from '../styles/Tweet.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 function Tweet(props)  {
   const [likes, setLikes] = useState(props.likes);
 
+  const user = useSelector((state) => state.user.value); // Récupération de l'utilisateur depuis le Redux store
     const handleLike = () => {
       const newLikes = likes + 1;
       setLikes(newLikes);
-      console.log(props)
       fetch(`http://localhost:3000/tweets/${props.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -17,6 +18,12 @@ function Tweet(props)  {
         }).then(response => response.json())
           .then();
     }
+
+    console.log(props)
+    console.log(user)
+
+
+
     return (
     <div className={styles.container}>
       <div className={styles.userInfos}>
@@ -30,7 +37,10 @@ function Tweet(props)  {
       <div>
         <FontAwesomeIcon icon={faHeart} onClick={()=>handleLike()}/>
         <span>{likes}</span>
-        <FontAwesomeIcon icon={faTrash} />
+
+            {props.token === user.token ? (
+                <FontAwesomeIcon icon={faTrash}  onClick={()=>removeTweet()}/>
+            ) : null}
       </div>
     </div>
   );
