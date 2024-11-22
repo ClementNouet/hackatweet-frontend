@@ -5,13 +5,14 @@
     display: grid;
     grid-template-rows: 1fr;
     grid-template-columns: 3fr 6fr 3fr;
-    background-color: #151D27;
+    background-color: #1f1c31;
     font-family: Verdana sans-serif;
     color: white;
   }
 
-  .titre {
-    font-weight: 900;
+  .title {
+    font-size: 30px;
+    font-family: verdana;
   }
 
   .left {
@@ -21,6 +22,10 @@
     justify-content: space-between;
     border-right: 1px solid gray;
     padding: 20px;
+  }
+
+  .userInfos {
+    font-family: Verdana sans-serif;
   }
 
 .userBottom {
@@ -69,79 +74,40 @@
   .sendtweet p {
     margin-right: 30px;
   }
-  .sendtweet button {
-    margin-right: 30px;
-    background-color: blue;
-    color: white;
-    border-radius: 30px;
-    border: 0px;
-    text-decoration: none;
-    width: 15%;
+
+  .countChar {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 16px;
   }
+
 
   .right{
     height: 100vh;
     padding: 20px;
   }
 
-  .button {
-    background-color: #1899D6;
-    border: solid transparent;
-    border-radius: 16px;
-    border-width: 0 0 4px;
-    box-sizing: border-box;
-    color: #FFFFFF;
-    cursor: pointer;
-    display: inline-block;
-    font-size: 15px;
-    font-weight: 700;
-    letter-spacing: .8px;
-    line-height: 20px;
-    margin: 0;
-    outline: none;
-    overflow: visible;
-    padding: 13px 19px;
-    text-align: center;
-    text-transform: uppercase;
-    touch-action: manipulation;
-    transform: translateZ(0);
-    transition: filter .2s;
-    user-select: none;
-    -webkit-user-select: none;
-    vertical-align: middle;
-    white-space: nowrap;
-   }
-   
-   .button:after {
-    background-clip: padding-box;
-    background-color: #1CB0F6;
-    border-radius: 16px;
-    bottom: -4px;
-    content: "";
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-    z-index: -1; 
-  }
-  
-  .button:focus {
-    outline: 2px solid #1CB0F6; 
-  }
-  
-  .button:hover:not(:disabled) {
-    filter: brightness(1.1);
-  }
-  
-  .button:disabled {
-    cursor: not-allowed; 
-    opacity: 0.6; 
-  }
-  
-  .button:active {
-    padding-bottom: 10px; 
-  }
-  
-  .button:active:after {
-    bottom: 0; 
-  }
+.button {
+  background-color: #AE445A;
+  border-radius: 50px;
+  border: 1PX solid #AE445A;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 22px;
+  font-weight: 500;
+  padding: 10px 30px;
+  text-align: center;
+ }
+
+ .button:hover {
+  background-color: #e25975;
+  border-radius: 50px;
+  border: 1PX solid #1f1c31;
+  color: #1f1c31;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 22px;
+  font-weight: 700;
+  padding: 10px 30px;
+  text-align: center;
+ }
