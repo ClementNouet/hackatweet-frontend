@@ -65,8 +65,8 @@ const handleLogout = () => {
                 <div className={styles.userBottom}>
                     <img src="pp_dog.png" alt="Photo de profil"  width="80px" height="80px"/>
                     <div>
-                        <p>{user.username}</p>
-                        <p>@{user.username}</p>
+                        <p  className={styles.userInfos}>{user.username}</p>
+                        <p  className={styles.userInfos}>@{user.username}</p>
                         <Link href="/login">
                         <button onClick={() => handleLogout()}>Logout</button>
                         </Link>
@@ -79,7 +79,7 @@ const handleLogout = () => {
                     <h2 className={styles.title}>Home</h2>
                     <input type='text' placeholder="What's up ?" onChange={(e)=> {setTweet(e.target.value); setCountChar(e.target.value.length)}} value={tweet} maxLength={280}/>
                     <div className={styles.sendtweet}>
-                    <p>{countChar}/280</p> 
+                    <p className={styles.countChar}>{countChar}/280</p> 
                     <button className={styles.button} onClick={()=>{handleTweet(), setFinal(true)}}>TWEET</button>
                     </div>
                 </div>
@@ -89,7 +89,7 @@ const handleLogout = () => {
             </div>
             {/* PARTIE DE DROITE // TRENDS LISTE # */}
             <div className={styles.right}>
-                <h2>Trends</h2>
+                <h2 className={styles.title}>Trends</h2>
             </div>  
       </div>
     </div>
