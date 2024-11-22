@@ -4,7 +4,7 @@ import { faHeart, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-const BACK_URL=process.env.BACK_URL
+const url = process.env.BACK_URL
 
 function Tweet(props)  {
   const { removeTweet } = props
@@ -14,7 +14,7 @@ function Tweet(props)  {
     const handleLike = () => {
       const newLikes = likes + 1;
       setLikes(newLikes);
-      fetch(`${BACK_URL}/tweets/${props.id}`, {
+      fetch(`${url}/tweets/${props.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({likes: newLikes}),

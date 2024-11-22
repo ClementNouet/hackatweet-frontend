@@ -5,7 +5,7 @@ import styles from '../styles/Signup.module.css';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 
-const BACK_URL=process.env.BACK_URL
+const url = process.env.BACK_URL
 
 
 function Signin (){
@@ -15,7 +15,7 @@ function Signin (){
 
     const handleConnection = () => {
 
-		fetch(`${BACK_URL}/users/signin`, {
+		fetch(`${url}/users/signin`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(signinData),

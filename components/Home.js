@@ -6,7 +6,7 @@ import { logout } from '../reducers/user';
 import Link from 'next/link';
 import Tweet from './tweet';
 
-const BACK_URL=process.env.BACK_URL
+const url = process.env.BACK_URL
 
 function Home() {
     const dispatch = useDispatch();   
@@ -18,7 +18,7 @@ function Home() {
   
     // Récupérer les tweets depuis l'API
     useEffect(() => {
-        fetch(`${BACK_URL}/tweets/`)
+        fetch(`${url}/tweets/`)
           .then((response) => response.json())
           .then((data) => {
 
@@ -28,7 +28,7 @@ function Home() {
       }, [final]); 
 
       const removeTweet = (tweetId) => {
-        fetch(`${BACK_URL}/tweets/${tweetId}`, {
+        fetch(`${url}/tweets/${tweetId}`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',

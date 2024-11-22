@@ -5,7 +5,7 @@ import styles from '../styles/Signup.module.css';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 
-const BACK_URL=process.env.BACK_URL
+const url = process.env.BACK_URL
 
 
 function Signup (){
@@ -14,7 +14,7 @@ function Signup (){
 	const router = useRouter();
 
     const handleRegister = () => {
-		fetch(`${BACK_URL}/users/signup`, {
+		fetch(`${url}/users/signup`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(signupData),
