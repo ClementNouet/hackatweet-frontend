@@ -1,17 +1,24 @@
 import styles from '../styles/Tweet.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { useEffect, useState } from 'react';
 
 function Tweet(props)  {
+  const [likes, setLikes] = useState(props.likes);
 
     const handleLike = () => {
+      const newLikes = likes + 1;
+      setLikes(newLikes);
+      console.log(props)
       fetch(`http://localhost:3000/tweets/${props.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(),
+        body: JSON.stringify({likes: newLikes}),
         }).then(response => response.json())
           .then(data=> {
-            
+            if (data.result){
+              setLikes(props.likes);
+            }
           });
     }
     return (
@@ -26,7 +33,7 @@ function Tweet(props)  {
       </div>
       <div>
         <FontAwesomeIcon icon={faHeart} onClick={()=>handleLike()}/>
-        <span>{props.likes}</span>
+        <span>{likes}</span>
         <FontAwesomeIcon icon={faTrash} />
       </div>
     </div>
