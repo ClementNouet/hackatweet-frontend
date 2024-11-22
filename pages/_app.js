@@ -23,7 +23,7 @@ function App({ Component, pageProps }) {
     <Provider store={store}>
       <PersistGate persistor={persistor}>
         <Head>
-          <link rel="icon" href="/dog_logo_light.png" alt="Logo" width={32} height={32} />
+          <link rel="icon" href="/favicon_dog.png" alt="Logo" width={32} height={32} />
           <title>Hackateweet</title>
         </Head>
         <Component {...pageProps} />
