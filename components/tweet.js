@@ -11,7 +11,6 @@ function Tweet(props)  {
   const { removeTweet } = props
   const [likes, setLikes] = useState(props.likes);
   const [isLiked, setIsLiked] = useState(false)
-  const [coeur, setCoeur] = useState(null)
 
   const user = useSelector((state) => state.user.value); // Récupération de l'utilisateur depuis le Redux store
     const handleLike = () => {
@@ -28,8 +27,6 @@ function Tweet(props)  {
           .then((data)=>{
             if (data.result){
               setIsLiked(true)
-            }else{
-              setIsLiked(false)
             }
           });
     }

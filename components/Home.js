@@ -86,7 +86,7 @@ const handleLogout = () => {
                         <p  className={styles.userInfos}>{user.username}</p>
                         <p  className={styles.userInfos}>@{user.username}</p>
                         <Link href="/index">
-                        <button onClick={() => handleLogout()}>Logout</button>
+                        <button onClick={() => handleLogout()} className={styles.logout}>Logout</button>
                         </Link>
                     </div>
                 </div>
