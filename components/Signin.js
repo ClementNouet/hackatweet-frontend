@@ -5,6 +5,8 @@ import styles from '../styles/Signup.module.css';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 
+const BACK_URL=process.env.BACK_URL
+
 
 function Signin (){
     const dispatch = useDispatch();

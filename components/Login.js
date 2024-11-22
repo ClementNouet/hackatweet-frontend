@@ -5,6 +5,7 @@ import Signup from './Signup';
 import Signin from './Signin';
 import Image from 'next/image';
 
+
 function Login() {
   const [isOpenSignUp, setIsOpenSignUp] = useState(false)
   const [isOpenSignIn, setIsOpenSignIn] = useState(false)
