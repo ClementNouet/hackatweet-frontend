@@ -25,11 +25,28 @@ function Home() {
             }
           )
       }, [final]); 
+
+      const removeTweet = (tweetId) => {
+        fetch(`http://localhost:3000/tweets/${tweetId}`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${user.token}`, // Envoyer le token dans les headers
+          },
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            setTweets((prev) => prev.filter((e) => e.id !== tweetId))
+          })
+      };
+      
+
     
       const tweetList = tweets.map((data, i) => {
-        return <Tweet key={i} {...data} username={data.username} content={data.content} date={data.createAt} likes={data.likes} id={data.id}/>
+        return <Tweet key={i} {...data} username={data.username} content={data.content} date={data.createAt} likes={data.likes} id={data.id} removeTweet={removeTweet}/>
       })
       
+
 
 const handleTweet = () => {
     fetch(`http://localhost:3000/tweets/newTweet/${user.token}`, {
