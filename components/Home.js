@@ -15,16 +15,19 @@ function Home() {
     const [tweet, setTweet] = useState('')
     const [countChar, setCountChar] = useState(0)
     const [final, setFinal] = useState(false)
-  
-    // Récupérer les tweets depuis l'API
-    useEffect(() => {
-        fetch(`${url}/tweets/`)
+
+    const fetchTweets = () => {
+      fetch(`${url}/tweets/`)
           .then((response) => response.json())
           .then((data) => {
-
               setTweets(data.reverse()); // Stockez les composants générés 
             }
           )
+    }
+  
+    // Récupérer les tweets depuis l'API
+    useEffect(() => {
+      fetchTweets()
       }, [final]); 
 
       const removeTweet = (tweetId) => {
@@ -44,7 +47,8 @@ function Home() {
 
     
       const tweetList = tweets.map((data, i) => {
-        return <Tweet key={i} {...data} username={data.username} content={data.content} date={data.createAt} likes={data.likes} id={data.id} usersLikes={data.usersLikes} removeTweet={removeTweet}/>
+        const hasLiked = data.usersLikes.includes(user.token)
+        return <Tweet key={i} {...data} hasLiked={hasLiked} username={data.username} content={data.content} fetchTweets={() => fetchTweets()} date={data.createAt} likes={data.likes} id={data.id} usersLikes={data.usersLikes} removeTweet={removeTweet} />
       })
       
 
