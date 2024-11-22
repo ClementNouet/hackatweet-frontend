@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { login, logout } from '../reducers/user';
 import styles from '../styles/Signup.module.css';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 
 
 function Signup (){
@@ -28,7 +29,7 @@ function Signup (){
 
     return (
         <div className={styles.main}>
-            {/*logo*/}
+            <Image src="/dog_logo_light.png" alt="Logo" width={50} height={50} />
             <p className={styles.title}>Create your Hackateweet account</p>
                 <input  className={styles.input}
 						type="text" 

@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import Signup from './Signup';
 import Signin from './Signin';
+import Image from 'next/image';
 
 function Login() {
   const [isOpenSignUp, setIsOpenSignUp] = useState(false)
@@ -19,7 +20,7 @@ function Login() {
         </div>
         <div className={styles.login}>
           {/*logo*/}
-          <img src="dog_logo_light.png" alt="Logo" width="80px" height="80px" />
+          <Image src="/dog_logo_light.png" alt="Logo" width={80} height={80} />
           <h1>See what's happening</h1>
           <h3>Join Hackateweet today.</h3>
           <button onClick={() => setIsOpenSignUp(true)} className={styles.button}>Sign up</button>
