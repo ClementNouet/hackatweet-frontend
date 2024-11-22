@@ -35,7 +35,7 @@ function Tweet(props)  {
       </div>
       <div>
         <FontAwesomeIcon icon={faHeart} className={styles.icon} onClick={()=>handleLike()}/>
-        <span>{likes}</span>
+        <span> {likes}  </span>
 
             {props.token === user.token ? (
                 <FontAwesomeIcon icon={faTrash} className={styles.icon}  onClick={() => removeTweet(props.id)}/>
