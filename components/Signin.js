@@ -15,7 +15,7 @@ function Signin (){
 
     const handleConnection = () => {
 
-		fetch(`${BACK_URL}users/signin`, {
+		fetch(`${BACK_URL}/users/signin`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(signinData),
