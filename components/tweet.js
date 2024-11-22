@@ -10,7 +10,9 @@ function Tweet(props)  {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(),
         }).then(response => response.json())
-          .then();
+          .then(data=> {
+            
+          });
     }
     return (
     <div className={styles.container}>
