@@ -5,30 +5,33 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment'
 
-const url = process.env.BACK_URL
+const url = process.env.NEXT_PUBLIC_BACK_URL
 
 function Tweet(props)  {
   const { removeTweet } = props
   const [likes, setLikes] = useState(props.likes);
   const [isLiked, setIsLiked] = useState(false)
+  const [coeur, setCoeur] = useState(null)
 
   const user = useSelector((state) => state.user.value); // Récupération de l'utilisateur depuis le Redux store
     const handleLike = () => {
-      let newLikes = null;
-      if(isLiked){
-        newLikes = likes - 1
-        setIsLiked(false)
-      }else{
-        newLikes = likes + 1;
-        setIsLiked(true)
-      }
+      const newLikes = isLiked ? likes - 1 : likes + 1; // Calcul du nouveau nombre de likes
+      const newIsLiked = !isLiked; // Inversion de l'état `isLiked`
+
       setLikes(newLikes);
+      setIsLiked(newIsLiked);
       fetch(`${url}/tweets/${props.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({likes: newLikes}),
+        body: JSON.stringify({likes: newLikes, token: user.token, isLiked: newIsLiked}),
         }).then(response => response.json())
-          .then();
+          .then((data)=>{
+            if (data.result){
+              setIsLiked(true)
+            }else{
+              setIsLiked(false)
+            }
+          });
     }
 
 
