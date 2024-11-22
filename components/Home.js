@@ -50,7 +50,7 @@ function Home() {
 
 
 const handleTweet = () => {
-    fetch(`https://hackatweet-backend-lemon-rho.vercel.app/tweets/newTweet/${user.token}`, {
+    fetch(`${url}/tweets/newTweet/${user.token}`, {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify({tweet: tweet}),
