@@ -17,7 +17,7 @@ function Home() {
   
     // Récupérer les tweets depuis l'API
     useEffect(() => {
-        fetch('http://localhost:3000/tweets/')
+        fetch('https://hackatweet-backend-lemon-rho.vercel.app/tweets/')
           .then((response) => response.json())
           .then((data) => {
 
@@ -27,7 +27,7 @@ function Home() {
       }, [final]); 
 
       const removeTweet = (tweetId) => {
-        fetch(`http://localhost:3000/tweets/${tweetId}`, {
+        fetch(`https://hackatweet-backend-lemon-rho.vercel.app/tweets/${tweetId}`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
@@ -49,7 +49,7 @@ function Home() {
 
 
 const handleTweet = () => {
-    fetch(`http://localhost:3000/tweets/newTweet/${user.token}`, {
+    fetch(`https://hackatweet-backend-lemon-rho.vercel.app/tweets/newTweet/${user.token}`, {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify({tweet: tweet}),
