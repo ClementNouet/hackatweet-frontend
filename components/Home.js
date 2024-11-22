@@ -44,7 +44,7 @@ function Home() {
 
     
       const tweetList = tweets.map((data, i) => {
-        return <Tweet key={i} {...data} username={data.username} content={data.content} date={data.createAt} likes={data.likes} id={data.id} removeTweet={removeTweet}/>
+        return <Tweet key={i} {...data} username={data.username} content={data.content} date={data.createAt} likes={data.likes} id={data.id} usersLikes={data.usersLikes} removeTweet={removeTweet}/>
       })
       
 

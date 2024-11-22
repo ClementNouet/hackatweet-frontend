@@ -12,7 +12,8 @@ function Tweet(props)  {
   const [likes, setLikes] = useState(props.likes);
   const [isLiked, setIsLiked] = useState(false)
 
-  const user = useSelector((state) => state.user.value); // Récupération de l'utilisateur depuis le Redux store
+  const user = useSelector((state) => state.user.value);
+  let coeur = props.usersLikes.some((e)=>e === user.token) // Récupération de l'utilisateur depuis le Redux store
     const handleLike = () => {
       const newLikes = isLiked ? likes - 1 : likes + 1; // Calcul du nouveau nombre de likes
       const newIsLiked = !isLiked; // Inversion de l'état `isLiked`
@@ -43,8 +44,8 @@ function Tweet(props)  {
         <p>{props.content}</p>
       </div>
       <div>
-        <FontAwesomeIcon icon={faHeart} className={styles.icon} style={{color: isLiked? "#ae445a" : "#FFFFFF"}} onClick={()=>handleLike()}/>
-        <span style={{color: isLiked? "#ae445a" : "#FFFFFF"}}> {likes}  </span>
+        <FontAwesomeIcon icon={faHeart} className={styles.icon} style={{color: coeur? "#ae445a" : "#FFFFFF"}} onClick={()=>handleLike()}/>
+        <span style={{color: coeur? "#ae445a" : "#FFFFFF"}}> {likes}  </span>
 
             {props.token === user.token ? (
                 <FontAwesomeIcon icon={faTrash} className={styles.icon}  onClick={() => removeTweet(props.id)}/>
