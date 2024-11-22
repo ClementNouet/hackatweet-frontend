@@ -3,8 +3,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import moment from 'moment'
 
-const url = process.env.NEXT_PUBLIC_BACK_URL
+const url = process.env.BACK_URL
 
 function Tweet(props)  {
   const { removeTweet } = props
@@ -21,14 +22,14 @@ function Tweet(props)  {
         }).then(response => response.json())
           .then();
     }
-    
+
 
     return (
     <div className={styles.container}>
       <div className={styles.userInfos}>
         <img className={styles.images} src="/pp_dog.png" alt="Photo de profil" width="60px" height="60px"/>
         <h2 className={styles.name}>{props.username}</h2>
-        <p className={styles.date}>{props.createAt}</p>
+        <p className={styles.date}>{moment(props.createAt).fromNow()}</p>
       </div>
       <div className={styles.tweetContent}>
         <p>{props.content}</p>
