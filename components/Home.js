@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { addTweet } from '../reducers/tweet';
+import Link from 'next/link';
 import Tweet from './tweet';
 
 
@@ -54,7 +55,9 @@ const handleTweet = () => {
       <div className={styles.main}>
             {/* PARTIE DE GAUCHE // LOGO + PP USERNAME @username */}
             <div className={styles.left}>
-            <img src="dog_logo_light.png" alt="Logo" width="80px" height="80px" />
+            <Link href="/login">
+                <img src="dog_logo_light.png" alt="Logo" width="80px" height="80px" />
+            </Link>
                 <div className={styles.userBottom}>
                     <img src="pp_dog.png" alt="Photo de profil"  width="80px" height="80px"/>
                     <div>
