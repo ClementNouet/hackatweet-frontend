@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 function Tweet(props)  {
+  const { removeTweet } = props
   const [likes, setLikes] = useState(props.likes);
 
   const user = useSelector((state) => state.user.value); // Récupération de l'utilisateur depuis le Redux store
@@ -18,11 +19,7 @@ function Tweet(props)  {
         }).then(response => response.json())
           .then();
     }
-
-    console.log(props)
-    console.log(user)
-
-
+    
 
     return (
     <div className={styles.container}>
@@ -39,7 +36,7 @@ function Tweet(props)  {
         <span>{likes}</span>
 
             {props.token === user.token ? (
-                <FontAwesomeIcon icon={faTrash} className={styles.icon}  onClick={()=>removeTweet()}/>
+                <FontAwesomeIcon icon={faTrash} className={styles.icon}  onClick={() => removeTweet(props.id)}/>
             ) : null}
       </div>
     </div>
