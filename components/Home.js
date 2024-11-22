@@ -1,13 +1,14 @@
 import styles from '../styles/Home.module.css';
 import Head from 'next/head';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { addTweet } from '../reducers/tweet';
+import { logout } from '../reducers/user';
 import Link from 'next/link';
 import Tweet from './tweet';
 
 
 function Home() {
+    const dispatch = useDispatch();   
     const user = useSelector((state) => state.user.value); // Récupération de l'utilisateur depuis le Redux store
     const [tweets, setTweets] = useState([]); // State pour stocker les tweets
     const [tweet, setTweet] = useState('')
@@ -19,6 +20,7 @@ function Home() {
         fetch('http://localhost:3000/tweets/')
           .then((response) => response.json())
           .then((data) => {
+
               setTweets(data.reverse()); // Stockez les composants générés 
             }
           )
@@ -44,7 +46,9 @@ const handleTweet = () => {
 		  });
 }
 
-
+const handleLogout = () => {
+  dispatch(logout());
+};
 
 
   return (
@@ -55,7 +59,7 @@ const handleTweet = () => {
       <div className={styles.main}>
             {/* PARTIE DE GAUCHE // LOGO + PP USERNAME @username */}
             <div className={styles.left}>
-            <Link href="/login">
+            <Link href="/home">
                 <img src="dog_logo_light.png" alt="Logo" width="80px" height="80px" />
             </Link>
                 <div className={styles.userBottom}>
@@ -63,6 +67,9 @@ const handleTweet = () => {
                     <div>
                         <p>{user.username}</p>
                         <p>@{user.username}</p>
+                        <Link href="/login">
+                        <button onClick={() => handleLogout()}>Logout</button>
+                        </Link>
                     </div>
                 </div>
             </div>
