@@ -19,6 +19,7 @@ function Login() {
         </div>
         <div className={styles.login}>
           {/*logo*/}
+          <img src="dog_logo_light.png" alt="Logo" width="80px" height="80px" />
           <h1>See what's happening</h1>
           <h3>Join Hackateweet today.</h3>
           <button onClick={() => setIsOpenSignUp(true)} className={styles.button}>Sign up</button>
@@ -35,7 +36,7 @@ function Login() {
                 <span className={styles.Y}></span>
                 <div className={styles.close}>Close</div>
                 </button>
-                <Signup />
+                <Signup className={styles.button}/>
               </div>
             </div>
           )}
