@@ -15,11 +15,7 @@ function Tweet(props)  {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({likes: newLikes}),
         }).then(response => response.json())
-          .then(data=> {
-            if (data.result){
-              setLikes(props.likes);
-            }
-          });
+          .then();
     }
     return (
     <div className={styles.container}>
