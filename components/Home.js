@@ -6,6 +6,7 @@ import { logout } from '../reducers/user';
 import Link from 'next/link';
 import Tweet from './tweet';
 
+const BACK_URL=process.env.BACK_URL
 
 function Home() {
     const dispatch = useDispatch();   
@@ -17,7 +18,7 @@ function Home() {
   
     // Récupérer les tweets depuis l'API
     useEffect(() => {
-        fetch('https://hackatweet-backend-lemon-rho.vercel.app/tweets/')
+        fetch(`${BACK_URL}/tweets/`)
           .then((response) => response.json())
           .then((data) => {
 
@@ -27,7 +28,7 @@ function Home() {
       }, [final]); 
 
       const removeTweet = (tweetId) => {
-        fetch(`https://hackatweet-backend-lemon-rho.vercel.app/tweets/${tweetId}`, {
+        fetch(`${BACK_URL}/tweets/${tweetId}`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',

@@ -12,7 +12,7 @@ function Tweet(props)  {
     const handleLike = () => {
       const newLikes = likes + 1;
       setLikes(newLikes);
-      fetch(`https://hackatweet-backend-lemon-rho.vercel.app/tweets/${props.id}`, {
+      fetch(`${BACK_URL}/tweets/${props.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({likes: newLikes}),

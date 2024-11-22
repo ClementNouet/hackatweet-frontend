@@ -12,7 +12,7 @@ function Signup (){
 	const router = useRouter();
 
     const handleRegister = () => {
-		fetch('https://hackatweet-backend-lemon-rho.vercel.app/users/signup', {
+		fetch(`${BACK_URL}/users/signup`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(signupData),
