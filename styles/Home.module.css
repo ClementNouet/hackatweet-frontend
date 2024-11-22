@@ -12,11 +12,9 @@
 
   .title {
     font-size: 30px;
-    font-family: verdana;
   }
 
   .left {
-    font-family: Verdana sans-serif;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -24,9 +22,6 @@
     padding: 20px;
   }
 
-  .userInfos {
-    font-family: Verdana sans-serif;
-  }
 
 .userBottom {
     display: flex;
@@ -57,7 +52,7 @@
     background: none;
     padding: 15px;
     color: white;
-    font-size: 24px;
+    font-size: 16px;
     margin-bottom: 15px;
   }
 
@@ -76,7 +71,6 @@
   }
 
   .countChar {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 16px;
   }
 
@@ -93,7 +87,7 @@
   color: #FFFFFF;
   cursor: pointer;
   display: inline-block;
-  font-size: 22px;
+  font-size: 16px;
   font-weight: 500;
   padding: 10px 30px;
   text-align: center;
@@ -106,7 +100,7 @@
   color: #1f1c31;
   cursor: pointer;
   display: inline-block;
-  font-size: 22px;
+  font-size: 16px;
   font-weight: 700;
   padding: 10px 30px;
   text-align: center;
