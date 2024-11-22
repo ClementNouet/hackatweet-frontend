@@ -3,14 +3,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 function Tweet(props)  {
-    const user = useSelector((state) => state.user.value); // Récupération de l'utilisateur depuis le Redux store
+    
     const handleLike = () => {
       fetch(`http://localhost:3000/tweets/${props.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(),
         }).then(response => response.json())
-          .then();
+          .then(data=> {
+            
+          });
     }
     return (
     <div className={styles.container}>
