@@ -6,7 +6,7 @@ import { logout } from '../reducers/user';
 import Link from 'next/link';
 import Tweet from './tweet';
 
-const url = process.env.BACK_URL
+const url = process.env.NEXT_PUBLIC_BACK_URL
 
 function Home() {
     const dispatch = useDispatch();   

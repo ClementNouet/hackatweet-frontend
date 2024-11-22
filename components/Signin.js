@@ -5,7 +5,7 @@ import styles from '../styles/Signup.module.css';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 
-const url = process.env.BACK_URL
+const url = process.env.NEXT_PUBLIC_BACK_URL
 
 
 function Signin (){

@@ -4,7 +4,7 @@ import { faHeart, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-const url = process.env.BACK_URL
+const url = process.env.NEXT_PUBLIC_BACK_URL
 
 function Tweet(props)  {
   const { removeTweet } = props
